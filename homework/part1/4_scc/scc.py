@@ -35,7 +35,7 @@ def dfs(g, start_node, visited_nodes):
 
     # add start node
     stack = [start_node]
-    print start_node, "it visited"
+    # print start_node, "it visited"
     visited_nodes.add(start_node)
     trace.append(start_node)
 
@@ -43,7 +43,7 @@ def dfs(g, start_node, visited_nodes):
         next_node = stack.pop()  # different with BFS
         for v in g[next_node]:
             if v not in visited_nodes:
-                print v, "it visited"
+                # print v, "it visited"
                 visited_nodes.add(v)
                 trace.append(v)
                 stack.append(v)
@@ -70,7 +70,7 @@ def dfs_rec(g):
     visited_nodes, trace = set(), []
 
     def inner_dfs(v):
-        print v, "rec visited"
+        # print v, "rec visited"
         visited_nodes.add(v)
         for u in g[v]:
             if u not in visited_nodes:
