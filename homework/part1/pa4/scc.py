@@ -1,13 +1,13 @@
 import sys
-# import resource
+import resource
 from collections import defaultdict
 import logging
 logger = logging.getLogger()
 
 # Increase recursion depth and stack size
 sys.setrecursionlimit(100000)
-# resource.setrlimit(resource.RLIMIT_STACK,
-#                   (resource.RLIM_INFINITY, resource.RLIM_INFINITY))
+resource.setrlimit(resource.RLIMIT_STACK,
+                   (resource.RLIM_INFINITY, resource.RLIM_INFINITY))
 
 
 def setup_debug_logger():
@@ -30,7 +30,7 @@ def read_lines(file_name):
 
 def dfs(g, start_node, visited_nodes):
     # iterative DFS does not work to measure finish time
-    # only if the graph has not breaks
+    # thinking how to measure finish time...
     trace = []
 
     # add start node
@@ -86,14 +86,15 @@ def dfs_rec(g):
 def scc(g, gr):
     visited_nodes, scc_graph = set(), defaultdict(list)
 
-    trace0 = dfs_loop(g)
-    trace1 = dfs_rec(g)
+    # trace0 = dfs_loop(g)
+    trace = dfs_rec(g)
     # logger.debug("trace is {0}".format(trace))
-    print trace0 == trace1
-    print 'trace0', trace0
-    print 'trace1', trace1
+    # test two method
+    # print trace0 == trace1
+    # print 'trace0', trace0
+    # print 'trace1', trace1
 
-    for node in reversed(trace0):
+    for node in reversed(trace):
         if node not in visited_nodes:
             # DFS of the reversed graph
             visited_nodes.add(node)
