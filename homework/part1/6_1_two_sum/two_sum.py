@@ -1,6 +1,4 @@
 import sys
-from collections import defaultdict
-from heapq import heappop, heappush
 import logging
 Logger = logging.getLogger()
 
@@ -38,7 +36,7 @@ def count_two_sum(d):
 
 
 if __name__ == "__main__":
-    setup_debug_logger()
+    # setup_debug_logger()
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
         d = read_lines(file_name)
